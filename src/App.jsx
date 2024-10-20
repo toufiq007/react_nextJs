@@ -1,13 +1,12 @@
 import "./App.css";
-import Form from "./components/Form";
-import { Message } from "./components/Mirror";
+import Travel from "./components/Travel";
+import TravelEditable from "./components/TravelEditable";
 
 function App() {
-  
   return (
     <>
-      {/* <Form /> */}
-      <Message messageColor="red" />
+      {/* <Travel /> */}
+      <TravelEditable />
     </>
   );
 }
