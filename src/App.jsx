@@ -1,10 +1,13 @@
 import "./App.css";
 import Form from "./components/Form";
+import { Message } from "./components/Mirror";
 
 function App() {
+  
   return (
     <>
-      <Form />
+      {/* <Form /> */}
+      <Message messageColor="red" />
     </>
   );
 }
