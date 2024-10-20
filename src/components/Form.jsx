@@ -1,53 +1,29 @@
 import { useState } from "react";
-import { submitForm } from "../utils/utils";
 
 const Form = () => {
-  const [answer, setAnswer] = useState("");
-  const [erorrMessage, setErrorMessage] = useState(null);
-
-  const [status, setStatus] = useState("isTyping");
-  // event handlers
-  const handleInputChange = (e) => {
-    setAnswer(e.target.value);
-    setErrorMessage(null);
-  };
-
-  const handleSubmit = async (e) => {
+  const [inputs, setInputs] = useState([{ id: crypto.randomUUID() }]);
+  const handleAddInput = (e) => {
     e.preventDefault();
-    setStatus("isSubmitting");
-
-    try {
-      const value = await submitForm(answer);
-      if (value) {
-        setStatus("success");
-      }
-    } catch (err) {
-      setErrorMessage(err.message);
-      setStatus("typing");
-      console.log(err.message);
-    }
+    setInputs((prev) => [...prev, { id: crypto.randomUUID() }]);
   };
-
-  if (status === "success") return <h1>Thats right</h1>;
+  const handleRemove = (id) => {
+    const updateInputs = inputs.filter((input) => input.id !== id);
+    setInputs([...updateInputs]);
+  };
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          value={answer}
-          onChange={handleInputChange}
-          disabled={status === "isSubmitting"}
-        ></textarea>
-        <br />
-        <button
-          type="submit"
-          disabled={answer.length < 0 || status === "isSubmitting"}
-        >
-          Submit
-        </button>
-        {status === "isSubmitting" && <p>Loading...</p>}
-        {erorrMessage && <p className="Error">{erorrMessage}</p>}
+    <div>
+      <form onSubmit={handleAddInput}>
+        <div>
+          {inputs.map((item) => (
+            <div key={item.id}>
+              <input type="text" placeholder={item.id} />
+              <button onClick={() => handleRemove(item.id)}>remove</button>
+            </div>
+          ))}
+        </div>
+        <button type="submit">add input</button>
       </form>
-    </>
+    </div>
   );
 };
 
