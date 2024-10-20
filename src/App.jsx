@@ -1,12 +1,12 @@
 import "./App.css";
-import Form from "./components/Form";
+import Travel from "./components/Travel";
+import TravelEditable from "./components/TravelEditable";
 
 function App() {
   return (
     <>
-      <h2>City quiz</h2>
-      <p>What city is located on two continents?</p>
-      <Form />
+      {/* <Travel /> */}
+      <TravelEditable />
     </>
   );
 }
