@@ -1,9 +1,12 @@
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useReducer, useState } from "react";
 import TaskList from "./components/TaskList";
 import { initialTasks } from "./data/data";
+import taskReducer from "./reducers/taskReducer";
 
 const App = () => {
-  const [tasks, setTasks] = useState(initialTasks);
+  //   const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, dispatch] = useReducer(taskReducer, initialTasks);
 
   const getNextId = (tasks) => {
     const nextId = tasks.reduce((prev, current) =>
@@ -15,24 +18,20 @@ const App = () => {
   // handle add
 
   const handleAddTasks = (text) => {
-    setTasks((prev) => [
-      ...prev,
-      { id: crypto.randomUUID(), text, done: false },
-    ]);
+    dispatch({
+      type: "added",
+      text,
+    });
   };
 
   // handle delete
   const handleDelete = (id) => {
-    setTasks((prev) => prev.filter((task) => task.id !== id));
+    dispatch({ type: "deleted", id });
   };
 
   // handleChange
   const handleChange = (updatedTask) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === updatedTask.id ? { ...updatedTask } : task
-      )
-    );
+    dispatch({ type: "changed", updatedTask });
   };
 
   return (
