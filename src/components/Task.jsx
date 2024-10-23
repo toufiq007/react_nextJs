@@ -1,8 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useTaskDispatch } from "../context/taskContext";
 
-const Task = ({ task, handleDelete, handleChange }) => {
+const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useTaskDispatch();
+  const handleChange = (updatedTask) => {
+    dispatch({ type: "changed", updatedTask });
+  };
+  const handleDelete = (id) => {
+    dispatch({ type: "deleted", id });
+  };
   return (
     <>
       <li>

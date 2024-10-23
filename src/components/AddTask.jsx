@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useTaskDispatch } from "../context/taskContext";
 
-const AddTask = ({ addTaxk }) => {
+const AddTask = () => {
   const [value, setValue] = useState("");
+  const dispatch = useTaskDispatch();
+
+  const addTaxk = (text) => {
+    dispatch({ type: "added", text });
+  };
 
   return (
     <div>

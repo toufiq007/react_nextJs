@@ -1,21 +1,18 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import AddTask from "./AddTask";
 import Task from "./Task";
+import { TaskContext } from "../context/taskContext";
 
-const TaskList = ({ tasks, addTaxk, handleChange, handleDelete }) => {
-  console.log(tasks);
+const TaskList = () => {
+  const tasks = useContext(TaskContext);
   return (
     <>
-      <AddTask addTaxk={addTaxk} />
+      <AddTask />
       {tasks.length > 0 ? (
         <ul>
           {tasks?.map((task) => (
-            <Task
-              key={task.id}
-              handleChange={handleChange}
-              handleDelete={handleDelete}
-              task={task}
-            />
+            <Task key={task.id} task={task} />
           ))}
         </ul>
       ) : (
