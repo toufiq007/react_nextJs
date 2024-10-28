@@ -1,15 +1,9 @@
-import ChangeColor from "./components/ChangeColor";
-import FocusForm from "./components/FocusForm";
-import CatFriends from "./components/CatFriend";
-import NewCatsFriend from "./components/NewCatsFrient";
+import Focus from "./components/Focus";
 
 const App = () => {
   return (
     <div>
-      {/* <ChangeColor /> */}
-      {/* <FocusForm /> */}
-      {/* <CatFriends /> */}
-      <NewCatsFriend />
+      <Focus />
     </div>
   );
 };
