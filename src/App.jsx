@@ -1,7 +1,13 @@
+import Counter from "./components/Counter";
+import Stopwatch from "./components/StopWatch";
+
 const App = () => {
-  return <>
-    
-  </>;
+  return (
+    <>
+      {/* <Counter /> */}
+      <Stopwatch />
+    </>
+  );
 };
 
 export default App;
