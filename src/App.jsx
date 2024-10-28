@@ -1,12 +1,16 @@
-import Counter from "./components/Counter";
-import Stopwatch from "./components/StopWatch";
+import ChangeColor from "./components/ChangeColor";
+import FocusForm from "./components/FocusForm";
+import CatFriends from "./components/CatFriend";
+import NewCatsFriend from "./components/NewCatsFrient";
 
 const App = () => {
   return (
-    <>
-      {/* <Counter /> */}
-      <Stopwatch />
-    </>
+    <div>
+      {/* <ChangeColor /> */}
+      {/* <FocusForm /> */}
+      {/* <CatFriends /> */}
+      <NewCatsFriend />
+    </div>
   );
 };
 
