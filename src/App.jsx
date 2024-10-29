@@ -4,8 +4,8 @@ import MyComponetns from "./components/MyComponetns";
 const App = () => {
   return (
     <div>
-      {/* <MyComponetns/> */}
-      <InfiniteLoop />
+      <MyComponetns />
+      {/* <InfiniteLoop /> */}
     </div>
   );
 };

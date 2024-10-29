@@ -2,9 +2,15 @@ import { useState } from "react";
 import VideoContainer from "./VideoContainer";
 
 const MyComponetns = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [inputValue, setInputValue] = useState("");
   return (
     <div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
       <button onClick={() => setIsPlaying(!isPlaying)}>
         {isPlaying ? "pause" : "play"}
       </button>
