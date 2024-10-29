@@ -1,11 +1,13 @@
-import InfiniteLoop from "./components/InfiniteLoop";
-import MyComponetns from "./components/MyComponetns";
+import ChatRoom from "./components/ChatRoom";
+// import InfiniteLoop from "./components/InfiniteLoop";
+// import MyComponetns from "./components/MyComponetns";
 
 const App = () => {
   return (
     <div>
-      <MyComponetns />
+      {/* <MyComponetns /> */}
       {/* <InfiniteLoop /> */}
+      <ChatRoom />
     </div>
   );
 };
