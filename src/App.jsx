@@ -1,9 +1,13 @@
-import Focus from "./components/Focus";
+import ChatRoom from "./components/ChatRoom";
+// import InfiniteLoop from "./components/InfiniteLoop";
+// import MyComponetns from "./components/MyComponetns";
 
 const App = () => {
   return (
     <div>
-      <Focus />
+      {/* <MyComponetns /> */}
+      {/* <InfiniteLoop /> */}
+      <ChatRoom />
     </div>
   );
 };
