@@ -1,11 +1,9 @@
-import TodoList from "./components/Todo";
+import MyComponetns from "./components/MyComponetns";
 
 const App = () => {
-  return (
-    <div>
-      <TodoList />
-    </div>
-  );
+  return <div>
+    <MyComponetns/>
+  </div>;
 };
 
 export default App;
