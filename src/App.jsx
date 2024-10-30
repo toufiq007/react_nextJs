@@ -1,16 +1,9 @@
-import { useState } from "react";
-import FullExample from "./components/FullExample";
+import Example from "./components/Example";
 
 const App = () => {
-  const [show, setShow] = useState(false);
   return (
     <div>
-      <h2>learning useEffect sequence</h2>
-      <button onClick={() => setShow(!show)}>
-        {show ? "mount" : "unmount"} component
-      </button>
-      {show && <hr />}
-      {show && <FullExample />}
+      <Example />
     </div>
   );
 };
