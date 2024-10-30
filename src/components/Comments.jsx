@@ -6,11 +6,20 @@ import { fetchComments } from "../utils/fetchComments";
 const Comments = ({ postId }) => {
   const [comments, setComments] = useState([]);
   useEffect(() => {
+    let ignore = false;
+    console.log("fetching....");
     const startFetching = async () => {
       const data = await fetchComments(postId);
-      setComments(data);
+      if (!ignore) {
+        console.log("setting...");
+        setComments(data);
+      }
     };
     startFetching();
+
+    return () => {
+      ignore = true;
+    };
   }, [postId]);
 
   console.log(comments);
