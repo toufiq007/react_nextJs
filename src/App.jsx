@@ -1,9 +1,10 @@
-import Examples from "./components/Examples";
+import Comments from "./components/Comments";
 
 const App = () => {
   return (
     <div>
-      <Examples />
+      <h2>learning data fetching</h2>
+      <Comments postId={1} />
     </div>
   );
 };
