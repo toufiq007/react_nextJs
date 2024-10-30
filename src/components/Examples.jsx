@@ -1,8 +1,14 @@
-import Map from "./Map";
+import Animation from "./Animation";
+// import Dialogue from "./Dialogue";
+// import Scroller from "./Scroller";
+// import Map from "./Map";
 const Examples = () => {
   return (
     <div>
-      <Map />
+      {/* <Map /> */}
+      {/* <Dialogue /> */}
+      {/* <Scroller /> */}
+      <Animation />
     </div>
   );
 };
