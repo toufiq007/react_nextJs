@@ -1,6 +1,7 @@
 import ExampleFive from "./ExampleFive";
 import ExampleNine from "./ExampleNine";
 import ExampleSix from "./ExampleSix";
+import Posts from "./Posts";
 // import ExampleFour from "./ExampleFour";
 
 const ExampleContainer = () => {
@@ -16,7 +17,10 @@ const ExampleContainer = () => {
       {/* <ExampleSix /> */}
 
       {/* example nine */}
-      <ExampleNine />
+      {/* <ExampleNine /> */}
+
+      {/* custom data fetching */}
+      <Posts/>
     </div>
   );
 };
