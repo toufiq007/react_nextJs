@@ -1,4 +1,5 @@
 import ExampleFive from "./ExampleFive";
+import ExampleSix from "./ExampleSix";
 // import ExampleFour from "./ExampleFour";
 
 const ExampleContainer = () => {
@@ -7,8 +8,11 @@ const ExampleContainer = () => {
       {/* example four */}
       {/* <ExampleFour /> */}
 
-      {/* example give */}
-      <ExampleFive />
+      {/* example five */}
+      {/* <ExampleFive /> */}
+
+      {/* example six */}
+      <ExampleSix />
     </div>
   );
 };
