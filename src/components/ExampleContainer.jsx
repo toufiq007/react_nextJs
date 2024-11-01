@@ -1,4 +1,5 @@
 import ExampleFive from "./ExampleFive";
+import ExampleNine from "./ExampleNine";
 import ExampleSix from "./ExampleSix";
 // import ExampleFour from "./ExampleFour";
 
@@ -12,7 +13,10 @@ const ExampleContainer = () => {
       {/* <ExampleFive /> */}
 
       {/* example six */}
-      <ExampleSix />
+      {/* <ExampleSix /> */}
+
+      {/* example nine */}
+      <ExampleNine />
     </div>
   );
 };
