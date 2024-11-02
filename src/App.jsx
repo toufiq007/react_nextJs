@@ -1,9 +1,13 @@
-import Pointer from "./components/Pointer";
+import Form from "./components/Form";
+import SaveButton from "./components/SaveButton";
+import StatusBar from "./components/StatusBar";
 
 const App = () => {
   return (
     <div>
-      <Pointer />
+      <StatusBar />
+      {/* <SaveButton /> */}
+      {/* <Form /> */}
     </div>
   );
 };
