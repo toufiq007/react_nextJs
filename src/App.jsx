@@ -1,9 +1,8 @@
-import Pointer from "./components/Pointer";
-
+import Timer from "./components/Timer";
 const App = () => {
   return (
     <div>
-      <Pointer />
+      <Timer />
     </div>
   );
 };
