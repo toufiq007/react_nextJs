@@ -1,13 +1,9 @@
-import Form from "./components/Form";
-import SaveButton from "./components/SaveButton";
-import StatusBar from "./components/StatusBar";
+import Counter from "./components/Counter";
 
 const App = () => {
   return (
     <div>
-      <StatusBar />
-      {/* <SaveButton /> */}
-      {/* <Form /> */}
+      <Counter />
     </div>
   );
 };
