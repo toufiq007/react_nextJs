@@ -5,9 +5,9 @@ import StatusBar from "./components/StatusBar";
 const App = () => {
   return (
     <div>
-      {/* <StatusBar />
-      <SaveButton /> */}
-      <Form />
+      <StatusBar />
+      {/* <SaveButton /> */}
+      {/* <Form /> */}
     </div>
   );
 };
