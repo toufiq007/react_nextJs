@@ -10,7 +10,11 @@ import {
   getContactLoader,
   getContactsLoader,
 } from "./loaders/contactLoader.js";
-import { createContactActions } from "./actions/contactsAction.js";
+import {
+  createContactActions,
+  editContactAction,
+} from "./actions/contactsAction.js";
+import EditContact from "./EditContact.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +28,12 @@ const router = createBrowserRouter([
         path: "/contacts/:contactId",
         element: <Contact />,
         loader: getContactLoader,
+      },
+      {
+        path: "/contacts/:contactId/edit",
+        element: <EditContact />,
+        loader: getContactLoader,
+        action: editContactAction,
       },
     ],
   },
