@@ -69,8 +69,11 @@ export default function Contact() {
 }
 
 function Favorite({ contact }) {
-  const favorite = contact.favorite;
+  let favorite = contact.favorite;
   const fetcher = useFetcher();
+  if (fetcher.formData){
+    favorite = fetcher.formData.get("favourite") === "true"
+  }
   return (
     <fetcher.Form method="post">
       <button
