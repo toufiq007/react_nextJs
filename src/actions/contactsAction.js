@@ -16,6 +16,7 @@ export async function editContactAction({ request, params }) {
 
 // delete action
 export const deleteContactAction = async ({ params }) => {
+  throw new Error("");
   await deleteContact(params.contactId);
   return redirect("/");
 };
