@@ -11,6 +11,7 @@ import {
   getContactsLoader,
 } from "./loaders/contactLoader.js";
 import {
+  contactFavouriteAction,
   createContactActions,
   deleteContactAction,
   editContactAction,
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
         path: "/contacts/:contactId",
         element: <Contact />,
         loader: getContactLoader,
+        action: contactFavouriteAction,
       },
       {
         path: "/contacts/:contactId/edit",
