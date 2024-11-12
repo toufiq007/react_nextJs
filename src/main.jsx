@@ -12,6 +12,7 @@ import {
 } from "./loaders/contactLoader.js";
 import {
   createContactActions,
+  deleteContactAction,
   editContactAction,
 } from "./actions/contactsAction.js";
 import EditContact from "./EditContact.jsx";
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         element: <EditContact />,
         loader: getContactLoader,
         action: editContactAction,
+      },
+      {
+        path: "/contacts/:contactId/destroy",
+        action: deleteContactAction,
       },
     ],
   },

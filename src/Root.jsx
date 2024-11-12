@@ -1,4 +1,4 @@
-import { Form, Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
+import { Form, NavLink, Outlet, useLoaderData } from "react-router-dom";
 
 export default function Root() {
   const { contacts } = useLoaderData();
