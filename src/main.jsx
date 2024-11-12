@@ -10,7 +10,13 @@ import {
   getContactLoader,
   getContactsLoader,
 } from "./loaders/contactLoader.js";
-import { createContactActions } from "./actions/contactsAction.js";
+import {
+  createContactActions,
+  deleteContactAction,
+  editContactAction,
+} from "./actions/contactsAction.js";
+import EditContact from "./EditContact.jsx";
+import Index from "./Index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,9 +27,24 @@ const router = createBrowserRouter([
     action: createContactActions,
     children: [
       {
+        index: true,
+        element: <Index />,
+      },
+      {
         path: "/contacts/:contactId",
         element: <Contact />,
         loader: getContactLoader,
+      },
+      {
+        path: "/contacts/:contactId/edit",
+        element: <EditContact />,
+        loader: getContactLoader,
+        action: editContactAction,
+      },
+      {
+        path: "/contacts/:contactId/destroy",
+        action: deleteContactAction,
+        errorElement: <div>ooops something went wrong!!</div>,
       },
     ],
   },
