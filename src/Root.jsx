@@ -1,8 +1,16 @@
 import { useEffect } from "react";
-import { Form, NavLink, Outlet, useLoaderData } from "react-router-dom";
+import {
+  Form,
+  NavLink,
+  Outlet,
+  useLoaderData,
+  useSubmit,
+} from "react-router-dom";
 
 export default function Root() {
   const { contacts, q } = useLoaderData();
+
+  const submit = useSubmit();
 
   // sort some ui issue
   useEffect(() => {
@@ -22,6 +30,7 @@ export default function Root() {
               type="search"
               name="q"
               defaultValue={q}
+              onChange={(e) => submit(e.currentTarget.form)} // this is for handling the form
             />
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
