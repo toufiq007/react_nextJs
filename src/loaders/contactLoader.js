@@ -12,5 +12,12 @@ export const getContactsLoader = async ({ request }) => {
 // get a single contact loader
 export const getContactLoader = async ({ params }) => {
   const contact = await getContact(params.contactId);
+  // if contact not found then show error in here
+  if (!contact) {
+    throw new Response("", {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
   return { contact };
 };
