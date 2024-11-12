@@ -3,7 +3,7 @@ import { createContact, deleteContact, updateContact } from "../contact";
 
 export const createContactActions = async () => {
   const contact = await createContact();
-  return { contact };
+  return redirect(`contacts/${contact.id}/edit`);
 };
 
 // edit action
