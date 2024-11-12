@@ -17,6 +17,11 @@ export default function Root() {
     document.getElementById("q").value = q;
   }, [q]);
 
+  // add spinner to the searching ui
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has("q");
+
   return (
     <>
       <div id="sidebar">
@@ -31,8 +36,10 @@ export default function Root() {
               name="q"
               defaultValue={q}
               onChange={(e) => submit(e.currentTarget.form)} // this is for handling the form
+              className={searching ? "loading" : ""} // this is for give a spinner
             />
-            <div id="search-spinner" aria-hidden hidden={true} />
+            <div id="search-spinner" aria-hidden hidden={!searching} />
+            {/* <div id="search-spinner" aria-hidden hidden={true} /> */}
             <div className="sr-only" aria-live="polite"></div>
           </Form>
           <Form method="post">
