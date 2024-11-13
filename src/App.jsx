@@ -38,12 +38,21 @@ export default function App() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/posts`);
+        const response = await axios.get(`http://localhost:8000/post`);
         if (response.statusText === "OK") {
           setPosts(response.data);
         }
       } catch (err) {
-        console.log(err);
+        // error got from the server
+        if (err.response) {
+          setError(
+            `error from server: status code : ${err?.response.status} errorName: ${err.response.data}`
+          );
+        }
+        // error got if request is not sent to the server or network error
+        else {
+          setError(`error name: ${err.message}`);
+        }
       }
     };
     fetchPosts();
