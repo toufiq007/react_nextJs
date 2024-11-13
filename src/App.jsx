@@ -38,13 +38,31 @@ export default function App() {
     }
   };
 
-  const handleEditPost = (updatedPost) => {
-    console.log(updatedPost);
-    setPosts((prevPosts) =>
-      prevPosts.map((post) =>
-        post.id === updatedPost.id ? { ...updatedPost } : post
-      )
-    );
+  // this is the handler for edit post with axios put request
+  const handleEditPost = async (updatedPost) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:8000/posts/${updatedPost.id}`,
+        updatedPost
+      );
+      console.log(response.data, "this is the updated psost");
+      setPosts((prevPosts) =>
+        prevPosts.map((post) =>
+          post.id === response.data.id ? { ...response.data } : post
+        )
+      );
+    } catch (err) {
+      // error got from the server
+      if (err.response) {
+        setError(
+          `error from server: status code : ${err?.response.status} errorName: ${err.response.data}`
+        );
+      }
+      // error got if request is not sent to the server or network error
+      else {
+        setError(`error name: ${err.message}`);
+      }
+    }
   };
 
   // this is the handler for deleting post by axios delete method
