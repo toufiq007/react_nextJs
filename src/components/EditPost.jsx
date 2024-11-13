@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function EditPost({ post, onEditPost }) {
-  const [title, setTitle] = useState(post.title);
-  const [body, setBody] = useState(post.body);
+  console.log(post, "this is the selected post");
+  const [title, setTitle] = useState(post ? post.title : "");
+  const [body, setBody] = useState(post ? post.body : "");
+
+  useEffect(() => {
+    setTitle(post ? post.title : "");
+    setBody(post ? post.body : "");
+  }, [post]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
