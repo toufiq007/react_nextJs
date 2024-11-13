@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import AddPost from "./components/AddPost.jsx";
 import EditPost from "./components/EditPost.jsx";
 import Posts from "./components/Posts";
-import initialPosts from "./data/db.js";
+import axios from "axios";
+// import initialPosts from "./data/db.js";
 
 export default function App() {
-  const [posts, setPosts] = useState(initialPosts);
+  const [posts, setPosts] = useState([]);
   const [post, setPost] = useState(null); // post I am editing
   const [error, setError] = useState(null);
 
@@ -32,6 +33,21 @@ export default function App() {
       setPosts(updatedPost);
     }
   };
+
+  // fetch our posts form json-server api
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/posts`);
+        if (response.statusText === "OK") {
+          setPosts(response.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   return (
     <div>
