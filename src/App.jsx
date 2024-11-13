@@ -3,7 +3,8 @@ import "./App.css";
 import AddPost from "./components/AddPost.jsx";
 import EditPost from "./components/EditPost.jsx";
 import Posts from "./components/Posts";
-import axios from "axios";
+// import axios from "axios";
+import api from "./api/api.js";
 // import initialPosts from "./data/db.js";
 
 export default function App() {
@@ -19,8 +20,8 @@ export default function App() {
       const id = posts.length ? Number(posts[posts.length - 1].id) + 1 : 1;
       // make the id string otherwise routes not found in delete url
       const finalPost = { id: id.toString(), ...newPost };
-      const response = await axios.post(
-        `http://localhost:8000/posts`,
+      const response = await api.post(
+        `/posts`,
         finalPost
       );
       setPosts((prev) => [...prev, { ...response.data }]);
@@ -41,8 +42,8 @@ export default function App() {
   // this is the handler for edit post with axios put request
   const handleEditPost = async (updatedPost) => {
     try {
-      const response = await axios.patch(
-        `http://localhost:8000/posts/${updatedPost.id}`,
+      const response = await api.patch(
+        `/posts/${updatedPost.id}`,
         updatedPost
       );
       console.log(response.data, "this is the updated psost");
@@ -69,7 +70,7 @@ export default function App() {
   const handleDeletePost = async (postId) => {
     if (confirm("Are you sure to delete the post ?")) {
       try {
-        await axios.delete(`http://localhost:8000/posts/${postId}`);
+        await api.delete(`/posts/${postId}`);
         const updatedPost = posts.filter((post) => post.id != postId);
         setPosts(updatedPost);
       } catch (err) {
@@ -91,7 +92,7 @@ export default function App() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/posts`);
+        const response = await api.get(`/posts`);
         if (response.statusText === "OK") {
           setPosts(response.data);
         }
