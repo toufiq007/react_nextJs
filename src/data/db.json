@@ -24,6 +24,21 @@
       "id": "5",
       "title": "nesciunt quas odios",
       "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque"
+    },
+    {
+      "id": 6,
+      "title": "new post",
+      "body": "post body"
+    },
+    {
+      "id": 7,
+      "title": "amar",
+      "body": "post"
+    },
+    {
+      "id": 8,
+      "title": "another new post",
+      "body": "another new post data"
     }
   ]
 }

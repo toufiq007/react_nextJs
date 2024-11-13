@@ -13,10 +13,32 @@ export default function App() {
 
   console.log(post, "selected post");
 
-  const handleAddPost = (newPost) => {
-    const id = posts.length ? Number(posts[posts.length - 1].id) + 1 : 1;
-    setPosts((prevPosts) => [...prevPosts, { id, ...newPost }]);
+
+  // this is the handler for adding new post with axios post request
+  const handleAddPost = async (newPost) => {
+    try {
+      const id = posts.length ? Number(posts[posts.length - 1].id) + 1 : 1;
+      const finalPost = { id, ...newPost };
+      const response = await axios.post(
+        `http://localhost:8000/posts`,
+        finalPost
+      );
+      setPosts((prev) => [...prev, { ...response.data }]);
+    } catch (err) {
+      // error got from the server
+      if (err.response) {
+        setError(
+          `error from server: status code : ${err?.response.status} errorName: ${err.response.data}`
+        );
+      }
+      // error got if request is not sent to the server or network error
+      else {
+        setError(`error name: ${err.message}`);
+      }
+    }
   };
+
+
 
   const handleEditPost = (updatedPost) => {
     console.log(updatedPost);
@@ -27,6 +49,8 @@ export default function App() {
     );
   };
 
+
+  
   const handleDeletePost = (postId) => {
     if (confirm) {
       const updatedPost = posts.filter((post) => post.id != postId);
@@ -38,7 +62,7 @@ export default function App() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/post`);
+        const response = await axios.get(`http://localhost:8000/posts`);
         if (response.statusText === "OK") {
           setPosts(response.data);
         }
