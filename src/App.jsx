@@ -13,12 +13,12 @@ export default function App() {
 
   console.log(post, "selected post");
 
-
   // this is the handler for adding new post with axios post request
   const handleAddPost = async (newPost) => {
     try {
       const id = posts.length ? Number(posts[posts.length - 1].id) + 1 : 1;
-      const finalPost = { id, ...newPost };
+      // make the id string otherwise routes not found in delete url
+      const finalPost = { id: id.toString(), ...newPost };
       const response = await axios.post(
         `http://localhost:8000/posts`,
         finalPost
@@ -38,8 +38,6 @@ export default function App() {
     }
   };
 
-
-
   const handleEditPost = (updatedPost) => {
     console.log(updatedPost);
     setPosts((prevPosts) =>
@@ -49,26 +47,25 @@ export default function App() {
     );
   };
 
-
   // this is the handler for deleting post by axios delete method
   const handleDeletePost = async (postId) => {
     if (confirm("Are you sure to delete the post ?")) {
-     try{
-      await axios.delete(`http://localhost:8000/posts/${postId}`)
-      const updatedPost = posts.filter((post) => post.id != postId);
-      setPosts(updatedPost);
-     }catch (err) {
-      // error got from the server
-      if (err.response) {
-        setError(
-          `error from server: status code : ${err?.response.status} errorName: ${err.response.data}`
-        );
+      try {
+        await axios.delete(`http://localhost:8000/posts/${postId}`);
+        const updatedPost = posts.filter((post) => post.id != postId);
+        setPosts(updatedPost);
+      } catch (err) {
+        // error got from the server
+        if (err.response) {
+          setError(
+            `error from server: status code : ${err?.response.status} errorName: ${err.response.data}`
+          );
+        }
+        // error got if request is not sent to the server or network error
+        else {
+          setError(`error name: ${err.message}`);
+        }
       }
-      // error got if request is not sent to the server or network error
-      else {
-        setError(`error name: ${err.message}`);
-      }
-    }
     }
   };
 
