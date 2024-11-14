@@ -3,32 +3,38 @@ import Field from "../components/Field";
 import FieldSet from "../components/FieldSet";
 
 const LoginForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,formState:{errors} } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FieldSet label="Enter login details">
-        <Field label="Email">
+        <Field label="Email" error={errors.email}>
           <input
-            {...register("email")}
+            {...register("email", { required: "email is required" })}
             type="email"
             name="email"
             id="email"
             placeholder="enter email.."
-            className="p-2 border box-border w-[300px] rounded-md border-gray-300"
+            className={`p-2 border box-border w-[300px] rounded-md border-gray-300 ${errors.email && 'border-3 border-red-500'}`}
           />
         </Field>
 
-        <Field label="Password">
+        <Field label="Password" error={errors.password}>
           <input
-            {...register("password")}
+            {...register("password", {
+              required: "password is required",
+              minLength: {
+                value: 8,
+                message: "your password must be 8 characters",
+              },
+            })}
             type="password"
             name="password"
             id="password"
             placeholder="enter password.."
-            className="p-2 border box-border w-[300px] rounded-md border-gray-300"
+            className={`p-2 border box-border w-[300px] rounded-md border-gray-300 ${errors.password && 'border-3 border-red-500'}`}
           />
         </Field>
         <Field>
