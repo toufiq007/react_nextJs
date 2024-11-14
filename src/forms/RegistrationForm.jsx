@@ -1,11 +1,14 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import Field from "../components/Field";
 import FieldSet from "../components/FieldSet";
+import { FormControl } from "@mui/material";
+import CustomSelect from "../components/CustomSelect";
 
 const RegistrationForm = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm();
   const onSubmit = (formData) => {
@@ -23,12 +26,12 @@ const RegistrationForm = () => {
               {...register("picture")}
             />
           </Field>
-          <Field label="Name">
+          <Field label="Name" error={errors.name}>
             <input
-              {...register("name")}
+              {...register("name", { required: "name is required" })}
               name="name"
-              type="text"
               id="name"
+              type="text"
               placeholder="enter name"
               className={`p-2 border box-border w-[300px] rounded-md border-gray-300 ${
                 errors.name && "border-3 border-red-500"
@@ -66,9 +69,29 @@ const RegistrationForm = () => {
               }`}
             />
           </Field>
-          {/* {errors.root.random && (
-        )} */}
-          {/* <div className="text-red-500 my-3">{errors.formError.message}</div> */}
+
+          <Field label="Select Role">
+            <FormControl>
+              <Controller
+                name="role"
+                control={control}
+                defaultValue=""
+                rules={{ required: "role is required" }}
+                render={({ field }) => {
+                  return (
+                    <>
+                      <CustomSelect field={field} error={errors.role} />
+                      {errors.role && (
+                        <span className="text-red-500">
+                          {errors.role.message}
+                        </span>
+                      )}
+                    </>
+                  );
+                }}
+              />
+            </FormControl>
+          </Field>
           <Field>
             <button className="text-md text-white text-md cursor-pointer p-1 border rounded-lg hover:bg-purple-600 bg-purple-400  px-5">
               Login
