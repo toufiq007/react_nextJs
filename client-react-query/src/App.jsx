@@ -1,11 +1,12 @@
 
 import './App.css'
+import ProductList from './components/ProductList'
 
 function App() {
 
   return (
     <>
-      <h2>use react query</h2>
+      <ProductList/>
     </>
   )
 }
