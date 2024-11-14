@@ -1,12 +1,18 @@
+import { useForm } from "react-hook-form";
 import Field from "../components/Field";
 import FieldSet from "../components/FieldSet";
 
 const LoginForm = () => {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <FieldSet label="Enter login details">
         <Field label="Email">
           <input
+            {...register("email")}
             type="email"
             name="email"
             id="email"
@@ -17,6 +23,7 @@ const LoginForm = () => {
 
         <Field label="Password">
           <input
+            {...register("password")}
             type="password"
             name="password"
             id="password"
