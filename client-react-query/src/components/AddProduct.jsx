@@ -13,7 +13,7 @@ const AddProduct = () => {
   });
 
   // this is our code for mutation
-  const mutaion = useMutation({
+  const mutation = useMutation({
     mutationFn: (newProduct) =>
       axios.post(`http://localhost:3000/products`, newProduct),
     onSuccess: (data, variables, context) => {
@@ -37,13 +37,19 @@ const AddProduct = () => {
 
   const submitData = (e) => {
     e.preventDefault();
-    mutaion.mutate(formData);
+    mutation.mutate(formData);
     console.log(formData);
   };
+
+
+  // loading and error handing
+  if (mutation.isPending) return <div>submitting...</div>
+  if (mutation.isError) return <div>{mutation.error.message}</div>
+
   return (
     <div className="m-2 p-2 bg-gray-100 w-1/5 h-1/2">
       <h2 className="text-2xl my-2">Add a Product</h2>
-      {/* {mutation.isSuccess && <p>Product Added!</p>} */}
+      {mutation.isSuccess && <p>Product Added!</p>}
 
       <form className="flex flex-col" onSubmit={submitData}>
         <input
