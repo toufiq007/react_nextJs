@@ -2,8 +2,8 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 // this function is for loading data
-const retriveProducts = async () => {
-  const response = await axios.get(`http://localhost:3000/products`);
+const retriveProducts = async ({ queryKey }) => {
+  const response = await axios.get(`http://localhost:3000/${queryKey[0]}`);
   return response.data;
 };
 
@@ -12,7 +12,12 @@ const ProductList = () => {
     data: productsList,
     error,
     isLoading,
-  } = useQuery({ queryKey: ["products"], queryFn: retriveProducts });
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: retriveProducts,
+    // retry: false, // try to fetch data again
+    // refetchInterval:1000 // fetch data after some times of interval
+  });
 
   if (isLoading) return <div>fetching data...</div>;
   if (error) return <div>an error occured {error.message}</div>;

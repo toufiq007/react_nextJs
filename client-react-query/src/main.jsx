@@ -5,7 +5,13 @@ import "./index.css";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-const client = new QueryClient();
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity, // set statetime in globally
+    },
+  },
+});
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
