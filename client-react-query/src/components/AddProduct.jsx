@@ -16,10 +16,15 @@ const AddProduct = () => {
   const mutaion = useMutation({
     mutationFn: (newProduct) =>
       axios.post(`http://localhost:3000/products`, newProduct),
-    onSuccess: () => {
+    onSuccess: (data, variables, context) => {
+      // this context value should be under onMutate function returning value
       // this code for automatic fetching the products after adding in the product list
       queryClient.invalidateQueries(["products"]);
       alert("you product is successfully added in the product list");
+    },
+    // this onMutate function runs before the onSuccess function
+    onMutate: (variables) => {
+      return { greeting: "hello buddy!!" }; // this value will be sent to the previous onSuccess functions context value
     },
   });
 
