@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 
 const AddProduct = () => {
+  const queryClient = useQueryClient();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -9,15 +12,27 @@ const AddProduct = () => {
     thumbnail: "",
   });
 
+  // this is our code for mutation
+  const mutaion = useMutation({
+    mutationFn: (newProduct) =>
+      axios.post(`http://localhost:3000/products`, newProduct),
+    onSuccess: () => {
+      // this code for automatic fetching the products after adding in the product list
+      queryClient.invalidateQueries(["products"]);
+      alert("you product is successfully added in the product list");
+    },
+  });
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value =
       e.target.type === "number" ? e.target.valueAsNumber : e.target.value;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, id: crypto.randomUUID(), [name]: value });
   };
 
   const submitData = (e) => {
     e.preventDefault();
+    mutaion.mutate(formData);
     console.log(formData);
   };
   return (
