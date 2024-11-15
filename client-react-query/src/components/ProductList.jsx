@@ -7,7 +7,7 @@ const retriveProducts = async ({ queryKey }) => {
   return response.data;
 };
 
-const ProductList = () => {
+const ProductList = ({ setProductId }) => {
   const {
     data: productsList,
     error,
@@ -38,6 +38,12 @@ const ProductList = () => {
                 alt={product.title}
               />
               <p className="text-xl my-3">{product.title}</p>
+              <button
+                onClick={() => setProductId(product.id)}
+                className="bg-purple-500 px-4 my-2 rounded text-white hover:bg-purple-800 cursor-pointer"
+              >
+                see details
+              </button>
             </li>
           ))}
       </ul>

@@ -16,7 +16,8 @@ const ProductDetails = ({ id }) => {
     error,
   } = useQuery({ queryKey: ["products", id], queryFn: retriveSingleProduct });
 
-  console.log(product, isLoading, error);
+  if (isLoading) return <div>fetching data...</div>;
+  if (error) return <div>an error occured {error.message}</div>;
   return (
     <div className="w-1/5">
       <h1 className="text-3xl my-2">Product Details</h1>
