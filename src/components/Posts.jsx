@@ -1,25 +1,22 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import Card from "./Card";
+import Post from "./Post";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    fetch(`http://localhost:3000/data`)
+    fetch(`https://picsum.photos/v2/list?page=${page}&limit=3`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
   }, []);
+  console.log(posts);
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: "20px",
-      }}
-    >
+    <div>
       {posts.length > 0 &&
-        posts.map((post) => <Card key={post.id} post={post} />)}
+        posts.map((post) => (
+          <Post key={post.id} imgUrl={post.download_url} author={post.author} />
+        ))}
     </div>
   );
 };
