@@ -23,6 +23,10 @@ const App = () => {
     );
   };
 
+  const totalValue = counters.reduce((initialVal, currentVal) => {
+    return (initialVal += currentVal.value);
+  }, 0);
+
   return (
     <div>
       {counters.map((count) => {
@@ -54,7 +58,7 @@ const App = () => {
           padding: "20px",
         }}
       >
-        <Stats totalCount={counters[0].value + counters[0].value} />
+        <Stats totalCount={totalValue} />
       </div>
     </div>
   );
