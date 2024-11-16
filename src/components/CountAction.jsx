@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
-const CountAction = ({ increment, decrement,id }) => {
+const CountAction = ({ increment, decrement}) => {
   return (
     <div>
-      <button onClick={()=> increment(id)}>increment</button>
-      <button onClick={()=> decrement(id)}>decrement</button>
+      <button onClick={increment}>increment</button>
+      <button onClick={decrement}>decrement</button>
     </div>
   );
 };

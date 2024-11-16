@@ -29,6 +29,7 @@ const App = () => {
         return (
           <>
             <div
+              key={count.id}
               style={{
                 background: "#ededed",
                 width: "400px",
@@ -38,9 +39,8 @@ const App = () => {
             >
               <Counter
                 count={count.value}
-                id={count.id}
-                handleIncrement={incrementCounter}
-                handleDecrement={decrementCounter}
+                handleIncrement={() => incrementCounter(count.id)}
+                handleDecrement={() => decrementCounter(count.id)}
               />
             </div>
           </>
