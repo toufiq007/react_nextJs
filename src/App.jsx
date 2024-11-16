@@ -2,6 +2,7 @@ import Counter from "./components/Counter";
 import Stats from "./components/Stats";
 import { useDispatch, useSelector } from "react-redux";
 import { increment, decrement } from "./redux/features/counters/counterSlice";
+import Posts from "./components/Posts";
 
 const App = () => {
   // get our counters data from our redux store
@@ -53,6 +54,7 @@ const App = () => {
       >
         <Stats totalCount={totalValue} />
       </div>
+      <Posts/>
     </div>
   );
 };
