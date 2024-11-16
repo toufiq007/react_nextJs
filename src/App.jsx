@@ -25,38 +25,27 @@ const App = () => {
 
   return (
     <div>
-      <div
-        style={{
-          background: "#ededed",
-          width: "400px",
-          margin: "10px auto",
-          padding: "20px",
-        }}
-      >
-        <Counter
-          count={counters[0].value}
-          id={counters[0].id}
-          handleIncrement={incrementCounter}
-          handleDecrement={decrementCounter}
-        />
-      </div>
-
-      <div
-        style={{
-          background: "#ededed",
-          width: "400px",
-          margin: "10px auto",
-          padding: "20px",
-        }}
-      >
-        <Counter
-          count={counters[1].value}
-          id={counters[1].id}
-          handleIncrement={incrementCounter}
-          handleDecrement={decrementCounter}
-        />
-      </div>
-
+      {counters.map((count) => {
+        return (
+          <>
+            <div
+              style={{
+                background: "#ededed",
+                width: "400px",
+                margin: "10px auto",
+                padding: "20px",
+              }}
+            >
+              <Counter
+                count={count.value}
+                id={count.id}
+                handleIncrement={incrementCounter}
+                handleDecrement={decrementCounter}
+              />
+            </div>
+          </>
+        );
+      })}
       <div
         style={{
           background: "#ededed",
