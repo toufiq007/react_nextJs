@@ -25,3 +25,8 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.custom-text-size{
+  font-size:10rem;
+}

@@ -1,5 +1,6 @@
 import CustomLink from "./components/CustomLink";
 import CustomLinkRouter from "./components/CustomLinkRouter";
+import UseGlobalCss from "./components/UseGlobalCss";
 
 export default function Home() {
   return (
@@ -7,7 +8,8 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         {/* <h2>hello nextjs</h2> */}
         {/* <CustomLink/> */}
-        <CustomLinkRouter />
+        {/* <CustomLinkRouter /> */}
+        <UseGlobalCss />
       </main>
     </div>
   );
