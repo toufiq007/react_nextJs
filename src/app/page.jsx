@@ -1,6 +1,7 @@
 import CustomLink from "./components/CustomLink";
 import CustomLinkRouter from "./components/CustomLinkRouter";
 import UseCssModule from "./components/UseCssModule";
+import UseDataFetching from "./components/UseDataFetching";
 import UseGlobalCss from "./components/UseGlobalCss";
 
 export default function Home() {
@@ -11,7 +12,8 @@ export default function Home() {
         {/* <CustomLink/> */}
         {/* <CustomLinkRouter /> */}
         {/* <UseGlobalCss /> */}
-        <UseCssModule />
+        {/* <UseCssModule /> */}
+        <UseDataFetching/>
       </main>
     </div>
   );
