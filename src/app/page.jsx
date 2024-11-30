@@ -1,5 +1,6 @@
 import CustomLink from "./components/CustomLink";
 import CustomLinkRouter from "./components/CustomLinkRouter";
+import UseCssModule from "./components/UseCssModule";
 import UseGlobalCss from "./components/UseGlobalCss";
 
 export default function Home() {
@@ -9,7 +10,8 @@ export default function Home() {
         {/* <h2>hello nextjs</h2> */}
         {/* <CustomLink/> */}
         {/* <CustomLinkRouter /> */}
-        <UseGlobalCss />
+        {/* <UseGlobalCss /> */}
+        <UseCssModule />
       </main>
     </div>
   );

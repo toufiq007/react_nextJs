@@ -1,0 +1,7 @@
+.myCustomFontStyle {
+  font-size: 5rem;
+  text-shadow: 5;
+  color: crimson;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
