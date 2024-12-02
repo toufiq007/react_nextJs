@@ -1,5 +1,6 @@
 const getPosts = async () => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  // this is our own api in the nextjs backend server --> api/blog/posts --> route
+  const res = await fetch(`http://localhost:3000/api/blog/posts`);
   return res.json();
 };
 
@@ -8,8 +9,8 @@ const UseDataFetching = async () => {
   console.log(posts); // log in server
   return (
     <div>
-      <h2 className="text-3xl text-center font-bold">Learn Data fetching</h2>
-      {posts.map((post) => (
+      <h2 className="text-3xl text-center font-bold">{posts?.message}</h2>
+      {posts?.data?.map((post) => (
         <div className="p-2 bg-blue-50 text-black my-5 rounded" key={post.id}>
           <p>{post.title}</p>
           <p>{post.body}</p>
