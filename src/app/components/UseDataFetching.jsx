@@ -1,4 +1,5 @@
 const getPosts = async () => {
+  // here we using our own api for data fetcting
   // this is our own api in the nextjs backend server --> api/blog/posts --> route
   const res = await fetch(`http://localhost:3000/api/blog/posts`);
   return res.json();
